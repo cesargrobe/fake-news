@@ -11,17 +11,13 @@
     background-color: #7e3e1c;
 }
 
-/* O QUE FOI ARRUMADO: Adicionado 'perspective' para ativar a profundidade 3D */
 .cartao {
     width: 260px;
-    height: 300px; /* Ajustado a altura para caber imagem + texto */
-    perspective: 1000px;
+    height: 200px;
 }
 
 .cartao-imagem {
     width: 100%;
-    height: 180px; /* Definida altura da imagem */
-    object-fit: cover; /* Impede que a imagem fique distorcida */
 }
 
 body {
@@ -54,11 +50,8 @@ footer {
     color: #fff;
 }
 
-/* O QUE FOI ARRUMADO: Adicionado largura e altura de 100% no container interno */
 .cartao-interno {
     position: relative;
-    width: 100%;
-    height: 100%;
     transition: transform 0.8s;
     transform-style: preserve-3d;
 }
@@ -67,18 +60,13 @@ footer {
     transform: rotateY(180deg);
 }
 
-/* O QUE FOI ARRUMADO: Ajustado dimensões e fundo para não transparecer */
 .cartao-frente, .cartao-verso {
     position: absolute;
-    width: 100%;
-    height: 100%;
-    background-color: #fff;
     border-radius: 12px;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
     backface-visibility: hidden;
 }
 
-/* O QUE FOI ARRUMADO: De 'rotate(180deg)' para 'rotateY(180deg)' */
 .cartao-verso {
     transform: rotateY(180deg);
 }
