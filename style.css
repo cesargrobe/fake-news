@@ -1,8 +1,18 @@
 * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #f5f2f2;
+    font-family: Arial, sans-serif;
+}
+
+/* Cabeçalho */
 .cabecalho {
     padding: 15px 25px;
     display: flex;
@@ -11,60 +21,90 @@
     background-color: #7e3e1c;
 }
 
-.cartao {
-    width: 260px;
-    height: 200px;
-}
-
-.cartao-imagem {
-    width: 100%;
-}
-
-body {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    background-color: #f5f2f2;
-}
-
-main {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+h1 {
+    color: #fff;
+    font-size: 24px;
 }
 
 .cabecalho-link {
     color: #fff;
     text-decoration: none;
 }
-h1 {
-    color: #fff;
-    font-size: 24px;
+
+/* Conteúdo Principal */
+main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    gap: 20px;
 }
-footer{
-    background-color: #7e3e1c;
-    padding: 15px 25px;
-    color: #fff;
+
+section {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
 }
+
+/* --- Efeito Flip Card (Efeito 3D) --- */
+
+.cartao {
+    width: 260px;
+    height: 320px; /* Aumentado para acomodar imagem e texto confortavelmente */
+    perspective: 1000px; /* Adiciona a profundidade 3D */
+}
+
 .cartao-interno {
     position: relative;
+    width: 100%;
+    height: 100%;
     transition: transform 0.8s;
     transform-style: preserve-3d;
 }
+
 .cartao:hover .cartao-interno {
     transform: rotateY(180deg);
 }
-.cartao-frente, .cartao-verso {
+
+.cartao-frente, 
+.cartao-verso {
     position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden; /* Esconde a face traseira durante a rotação */
     border-radius: 12px;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-    backface-visibility: hidden;
-}
-.cartao-verso {
-    transform: rotate(180deg);
-}
-section {
+    background-color: #ffffff;
     display: flex;
-    gap: 16px;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px;
+    text-align: center;
+}
+
+.cartao-frente {
+    border: 2px solid #e03e3e; /* Detalhe em vermelho para a "Mentira" */
+}
+
+.cartao-verso {
+    transform: rotateY(180deg); /* Correção de 'rotate' para 'rotateY' */
+    border: 2px solid #2e7d32; /* Detalhe em verde para a "Verdade" */
+}
+
+.cartao-imagem {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 12px;
+}
+
+/* Rodapé */
+footer {
+    background-color: #7e3e1c;
+    padding: 15px 25px;
+    color: #fff;
+    text-align: center;
 }
