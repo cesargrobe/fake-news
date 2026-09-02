@@ -1,18 +1,8 @@
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
 }
 
-body {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    background-color: #f5f2f2;
-    font-family: Arial, sans-serif;
-}
-
-/* Cabeçalho */
 .cabecalho {
     padding: 15px 25px;
     display: flex;
@@ -21,9 +11,31 @@ body {
     background-color: #7e3e1c;
 }
 
-h1 {
-    color: #fff;
-    font-size: 24px;
+/* O QUE FOI ARRUMADO: Adicionado 'perspective' para ativar a profundidade 3D */
+.cartao {
+    width: 260px;
+    height: 300px; /* Ajustado a altura para caber imagem + texto */
+    perspective: 1000px;
+}
+
+.cartao-imagem {
+    width: 100%;
+    height: 180px; /* Definida altura da imagem */
+    object-fit: cover; /* Impede que a imagem fique distorcida */
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #f5f2f2;
+}
+
+main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .cabecalho-link {
@@ -31,31 +43,18 @@ h1 {
     text-decoration: none;
 }
 
-/* Conteúdo Principal */
-main {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
-    gap: 20px;
+h1 {
+    color: #fff;
+    font-size: 24px;
 }
 
-section {
-    display: flex;
-    gap: 20px;
-    flex-wrap: wrap;
-    justify-content: center;
+footer {
+    background-color: #7e3e1c;
+    padding: 15px 25px;
+    color: #fff;
 }
 
-/* --- Efeito Flip Card (Efeito 3D) --- */
-
-.cartao {
-    width: 260px;
-    height: 320px; /* Aumentado para acomodar imagem e texto confortavelmente */
-    perspective: 1000px; /* Adiciona a profundidade 3D */
-}
-
+/* O QUE FOI ARRUMADO: Adicionado largura e altura de 100% no container interno */
 .cartao-interno {
     position: relative;
     width: 100%;
@@ -68,43 +67,23 @@ section {
     transform: rotateY(180deg);
 }
 
-.cartao-frente, 
-.cartao-verso {
+/* O QUE FOI ARRUMADO: Ajustado dimensões e fundo para não transparecer */
+.cartao-frente, .cartao-verso {
     position: absolute;
     width: 100%;
     height: 100%;
-    backface-visibility: hidden; /* Esconde a face traseira durante a rotação */
+    background-color: #fff;
     border-radius: 12px;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-    background-color: #ffffff;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 15px;
-    text-align: center;
+    backface-visibility: hidden;
 }
 
-.cartao-frente {
-    border: 2px solid #e03e3e; /* Detalhe em vermelho para a "Mentira" */
-}
-
+/* O QUE FOI ARRUMADO: De 'rotate(180deg)' para 'rotateY(180deg)' */
 .cartao-verso {
-    transform: rotateY(180deg); /* Correção de 'rotate' para 'rotateY' */
-    border: 2px solid #2e7d32; /* Detalhe em verde para a "Verdade" */
+    transform: rotateY(180deg);
 }
 
-.cartao-imagem {
-    width: 100%;
-    height: 180px;
-    object-fit: cover;
-    border-radius: 8px;
-    margin-bottom: 12px;
-}
-
-/* Rodapé */
-footer {
-    background-color: #7e3e1c;
-    padding: 15px 25px;
-    color: #fff;
-    text-align: center;
+section {
+    display: flex;
+    gap: 16px;
 }
